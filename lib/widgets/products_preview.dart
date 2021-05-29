@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:groceries_shopping_app/appTheme.dart';
 import 'package:groceries_shopping_app/product_provider.dart';
 import 'package:groceries_shopping_app/screens/home.dart';
+import 'package:groceries_shopping_app/widgets/filter.dart';
 import 'package:groceries_shopping_app/widgets/product_card.dart';
 import 'package:provider/provider.dart';
 
@@ -88,7 +89,7 @@ class ProductsPreview extends StatelessWidget {
                         tag: 'backarrow',
                         child: GestureDetector(
                           onTap: () async {
-                            await _buildAlartDialog(context);
+                            Navigator.of(context).pop(true);
                           },
                           child: Icon(
                             Icons.arrow_back,
@@ -101,13 +102,14 @@ class ProductsPreview extends StatelessWidget {
                         "Grocery App",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: response.setFontSize(18),
+                          fontSize: response.setFontSize(25),
                         ),
                       ),
                       Spacer(flex: 8),
                       GestureDetector(
                           onTap: () async {
-                            await _buildAlartDialog(context);
+                            // calling of filter will be done here
+                            _buildAlartDialog(context);
                           },
                           child: FaIcon(FontAwesomeIcons.bars))
                     ],

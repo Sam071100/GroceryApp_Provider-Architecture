@@ -6,6 +6,7 @@ import 'package:groceries_shopping_app/widgets/details_page_transition.dart';
 import 'package:provider/provider.dart';
 import '../appTheme.dart';
 
+// Here I have to improve the bottom overflow of the card screen
 class ProductCard extends StatelessWidget {
   ProductCard({@required this.index});
   final int index;
@@ -47,7 +48,8 @@ class ProductCard extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Image.asset(
                     producInfoProvider[index].picPath,
-                    scale: 2.4,
+                    scale: 5.9,
+                    fit: BoxFit.contain, // To change the size of the image
                   ),
                 ),
               ),
@@ -57,7 +59,7 @@ class ProductCard extends StatelessWidget {
                   Text(
                     producInfoProvider[index].price,
                     style: TextStyle(
-                      fontSize: response.setFontSize(24),
+                      fontSize: response.setFontSize(25),
                       fontWeight: FontWeight.w900,
                     ),
                   ),
@@ -65,7 +67,7 @@ class ProductCard extends StatelessWidget {
                   Text(
                     producInfoProvider[index].name,
                     style: TextStyle(
-                      fontSize: response.setFontSize(15),
+                      fontSize: response.setFontSize(18),
                       fontWeight: FontWeight.w800,
                     ),
                   ),

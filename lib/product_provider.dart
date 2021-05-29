@@ -2,7 +2,9 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:groceries_shopping_app/models/product.dart';
 
+// This is the class which is going to change the state and notify to each and every consumer widget
 class ProductsOperationsController extends ChangeNotifier {
+  // This is the list of products which is present in the stock
   List<Product> _productsInStock = [
     Product(
         name: 'Apple',
@@ -14,7 +16,7 @@ class ProductsOperationsController extends ChangeNotifier {
         name: 'Lemon',
         picPath: 'assets/lemons.jpg',
         price: '\₹10.00',
-        weight: '2 Pcs',
+        weight: '1 Pc',
         price1: 10),
     Product(
         name: 'Kiwi',
@@ -61,8 +63,8 @@ class ProductsOperationsController extends ChangeNotifier {
     Product(
       name: 'Amul Toned Milk',
       picPath: 'assets/milk.png',
-      price: '\₹30.00',
-      weight: '550g',
+      price: '\₹64.00',
+      weight: '1 Ltr',
       price1: 30,
     ),
     Product(
@@ -79,8 +81,8 @@ class ProductsOperationsController extends ChangeNotifier {
         price1: 90),
   ];
 
-  List<Product> _shoppingCart =
-      []; // Empty list to store the items kept in the cart
+  // This list gets updated when the user enters the product into the cart
+  List<Product> _shoppingCart = [];
   VoidCallback onCheckOutCallback;
 
   void onCheckOut({VoidCallback onCheckOutCallback}) {
@@ -120,7 +122,7 @@ class ProductsOperationsController extends ChangeNotifier {
               _productsInStock[index].orderedQuantity + (bulkOrder - 1),
         ),
       );
-      notifyListeners(); // Updating the state of the widget
+      notifyListeners(); // Informing the consumers to take this new state and rerender themselves
     } else {
       _shoppingCart[indexInCard].makeOrder(bulkOrder: bulkOrder);
       notifyListeners();
